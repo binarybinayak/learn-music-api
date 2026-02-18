@@ -1,3 +1,5 @@
+export const INSTRUMENTS: string[] = ["piano short", "piano long", "harmonium"];
+
 export const PIANO_SHORT_KEYS: string[] = [
   "A1",
   "A#1",
