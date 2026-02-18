@@ -1,3 +1,5 @@
+export const INSTRUMENTS: string[] = ["piano_long", "piano_short"];
+
 export const PIANO_SHORT_KEYS: string[] = [
   "A1",
   "A#1",
@@ -235,3 +237,9 @@ export const PIANO_LONG_FILE_EXTENSION: string = ".wav";
 export const PIANO_SHORT_FILE_EXTENSION: string = ".wav";
 
 export const HARMONIUM_FILE_EXTENSION: string = ".wav";
+
+export const PIANO_LONG_FILE_PATH: string = "/piano_long/";
+
+export const PIANO_SHORT_FILE_PATH: string = "/piano_short/";
+
+export const HARMONIUM_FILE_PATH: string = "/harmonium/";
