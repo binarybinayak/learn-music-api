@@ -1,9 +1,9 @@
 import { Router, Request, Response } from "express";
 import { INSTRUMENTS } from "../config/constants";
 import {
-  getNameThatNoteQuestion,
-  nameThatNoteQuestionProp,
-} from "../services/nameThatNote.services";
+  getMatchThePitchQuestion,
+  matchThePitchProp,
+} from "../services/matchThePitch.services";
 
 const router = Router();
 
@@ -24,7 +24,7 @@ router.get("/:instrument", (req: Request, res: Response) => {
     ? difficulty
     : "medium";
 
-  const question: nameThatNoteQuestionProp = getNameThatNoteQuestion(
+  const question: matchThePitchProp = getMatchThePitchQuestion(
     instrument.replace("_", " "),
     level,
   );

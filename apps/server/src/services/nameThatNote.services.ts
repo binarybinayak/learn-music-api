@@ -13,7 +13,7 @@ export type nameThatNoteQuestionProp = {
   answer: string;
 };
 
-export const getQuestion = (
+export const getNameThatNoteQuestion = (
   instrument: string,
   difficulty: string,
 ): nameThatNoteQuestionProp => {
