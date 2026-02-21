@@ -1,14 +1,10 @@
 import express, { Request, Response } from "express";
-import nameThatNoteRouter from "./controller/nameThatNote.controller";
-import matchThePitchRouter from "./controller/matchThePitch.controller";
+import apiRouter from "./api.routes";
 
 const app = express();
 
 app.use("/sounds", express.static("sounds"));
-
-app.use("/name-that-note", nameThatNoteRouter);
-
-app.use("/match-the-pitch", matchThePitchRouter);
+app.use("/api", apiRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to the Learn Music App!");
