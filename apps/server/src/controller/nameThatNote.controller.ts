@@ -1,9 +1,8 @@
 import { Router, Request, Response } from "express";
 import { INSTRUMENTS } from "../config/constants";
-import {
-  getNameThatNoteQuestion,
-  nameThatNoteQuestionProp,
-} from "../services/nameThatNote.services";
+import { getNameThatNoteQuestion } from "../services/nameThatNote.services";
+
+import type { nameThatNoteQuestionType } from "@learn-music-app/shared";
 
 const router = Router();
 
@@ -24,7 +23,7 @@ router.get("/:instrument", (req: Request, res: Response) => {
     ? difficulty
     : "medium";
 
-  const question: nameThatNoteQuestionProp = getNameThatNoteQuestion(
+  const question: nameThatNoteQuestionType = getNameThatNoteQuestion(
     instrument.replace("_", " "),
     level,
   );

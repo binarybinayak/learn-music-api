@@ -1,7 +1,12 @@
 import "./App.css";
+import NameThatNotePage from "./pages/games/NameThatNote";
 
 function App() {
-  return <div className="font-extrabold">Welcome to Learn Music App!</div>;
+  return (
+    <div className="font-extrabold">
+      <NameThatNotePage />
+    </div>
+  );
 }
 
 export default App;

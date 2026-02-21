@@ -7,16 +7,12 @@ import {
   PIANO_LONG_FILE_PATH,
 } from "../config/constants";
 
-export type nameThatNoteQuestionProp = {
-  file: string;
-  options: string[];
-  answer: string;
-};
+import type { nameThatNoteQuestionType } from "@learn-music-app/shared";
 
 export const getNameThatNoteQuestion = (
   instrument: string,
   difficulty: string,
-): nameThatNoteQuestionProp => {
+): nameThatNoteQuestionType => {
   if (instrument === "piano short") {
     return getPianoShortQuestion(difficulty);
   } else if (instrument === "piano long") {
@@ -28,7 +24,7 @@ export const getNameThatNoteQuestion = (
 
 const getPianoShortQuestion = (
   difficulty: string,
-): nameThatNoteQuestionProp => {
+): nameThatNoteQuestionType => {
   if (difficulty === "easy") {
     return getPianoShortEasyQuestion();
   }
@@ -44,7 +40,7 @@ const getPianoShortQuestion = (
   throw new Error("Difficulty not supported");
 };
 
-const getPianoShortEasyQuestion = (): nameThatNoteQuestionProp => {
+const getPianoShortEasyQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 72));
   const secondIndex = firstIndex + 16 + Math.floor(Math.random() * 9);
   const thirdIndex = secondIndex + 16 + Math.floor(Math.random() * 9);
@@ -66,7 +62,7 @@ const getPianoShortEasyQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoShortMediumQuestion = (): nameThatNoteQuestionProp => {
+const getPianoShortMediumQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 36));
   const secondIndex = firstIndex + 6 + Math.floor(Math.random() * 7);
   const thirdIndex = secondIndex + 6 + Math.floor(Math.random() * 7);
@@ -88,7 +84,7 @@ const getPianoShortMediumQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoShortHardQuestion = (): nameThatNoteQuestionProp => {
+const getPianoShortHardQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 20));
   const secondIndex = firstIndex + 1 + Math.floor(Math.random() * 5);
   const thirdIndex = secondIndex + 1 + Math.floor(Math.random() * 5);
@@ -110,7 +106,7 @@ const getPianoShortHardQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoShortMasterQuestion = (): nameThatNoteQuestionProp => {
+const getPianoShortMasterQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 4));
   const secondIndex = firstIndex + 1;
   const thirdIndex = secondIndex + 1;
@@ -132,7 +128,7 @@ const getPianoShortMasterQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoLongQuestion = (difficulty: string): nameThatNoteQuestionProp => {
+const getPianoLongQuestion = (difficulty: string): nameThatNoteQuestionType => {
   if (difficulty === "easy") {
     return getPianoLongEasyQuestion();
   }
@@ -148,7 +144,7 @@ const getPianoLongQuestion = (difficulty: string): nameThatNoteQuestionProp => {
   throw new Error("Difficulty not supported");
 };
 
-const getPianoLongEasyQuestion = (): nameThatNoteQuestionProp => {
+const getPianoLongEasyQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 72));
   const secondIndex = firstIndex + 16 + Math.floor(Math.random() * 9);
   const thirdIndex = secondIndex + 16 + Math.floor(Math.random() * 9);
@@ -170,7 +166,7 @@ const getPianoLongEasyQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoLongMediumQuestion = (): nameThatNoteQuestionProp => {
+const getPianoLongMediumQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 36));
   const secondIndex = firstIndex + 6 + Math.floor(Math.random() * 7);
   const thirdIndex = secondIndex + 6 + Math.floor(Math.random() * 7);
@@ -192,7 +188,7 @@ const getPianoLongMediumQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoLongHardQuestion = (): nameThatNoteQuestionProp => {
+const getPianoLongHardQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 20));
   const secondIndex = firstIndex + 1 + Math.floor(Math.random() * 5);
   const thirdIndex = secondIndex + 1 + Math.floor(Math.random() * 5);
@@ -214,7 +210,7 @@ const getPianoLongHardQuestion = (): nameThatNoteQuestionProp => {
   };
 };
 
-const getPianoLongMasterQuestion = (): nameThatNoteQuestionProp => {
+const getPianoLongMasterQuestion = (): nameThatNoteQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 4));
   const secondIndex = firstIndex + 1;
   const thirdIndex = secondIndex + 1;
