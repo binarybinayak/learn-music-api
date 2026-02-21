@@ -3,13 +3,16 @@ import { fetchNameThatNote } from "../../services/games";
 import { useState } from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import type { nameThatNoteQuestionType } from "@learn-music-app/shared";
-import { difficulties, instruments } from "../../app/constants";
+import {
+  NAME_THAT_NOTE_DIFFICULTIES,
+  NAME_THAT_NOTE_INSTRUMENTS,
+} from "../../app/constants";
 
 const NameThatNotePage = () => {
   const [difficulty, setDifficulty] =
-    useState<(typeof difficulties)[number]>("easy");
+    useState<(typeof NAME_THAT_NOTE_DIFFICULTIES)[number]>("easy");
   const [instrument, setInstrument] =
-    useState<(typeof instruments)[number]>("piano_long");
+    useState<(typeof NAME_THAT_NOTE_INSTRUMENTS)[number]>("piano_long");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState(""); // for god mode
   const [submitted, setSubmitted] = useState(false);
@@ -53,7 +56,9 @@ const NameThatNotePage = () => {
     setSelectedOption(null);
     setInputValue("");
     setSubmitted(false);
-    setDifficulty(e.target.value as (typeof difficulties)[number]);
+    setDifficulty(
+      e.target.value as (typeof NAME_THAT_NOTE_DIFFICULTIES)[number],
+    );
     setScore(0);
     refetch();
   };
@@ -62,7 +67,9 @@ const NameThatNotePage = () => {
     setSelectedOption(null);
     setInputValue("");
     setSubmitted(false);
-    setInstrument(e.target.value as (typeof instruments)[number]);
+    setInstrument(
+      e.target.value as (typeof NAME_THAT_NOTE_INSTRUMENTS)[number],
+    );
     setScore(0);
     refetch();
   };
@@ -80,7 +87,7 @@ const NameThatNotePage = () => {
             onChange={handleDifficultyChange}
             className="p-2 border rounded"
           >
-            {difficulties.map((level) => (
+            {NAME_THAT_NOTE_DIFFICULTIES.map((level) => (
               <option key={level} value={level}>
                 {level.charAt(0).toUpperCase() + level.slice(1)}
               </option>
@@ -95,7 +102,7 @@ const NameThatNotePage = () => {
             onChange={handleInstrumentChange}
             className="p-2 border rounded"
           >
-            {instruments.map((inst) => (
+            {NAME_THAT_NOTE_INSTRUMENTS.map((inst) => (
               <option key={inst} value={inst}>
                 {inst
                   .replace("_", " ")
