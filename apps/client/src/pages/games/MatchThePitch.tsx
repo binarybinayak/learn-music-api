@@ -141,7 +141,7 @@ const MatchThePitchPage = () => {
           </p>
 
           <form className="flex flex-col gap-3">
-            {data.options.map((option) => {
+            {data.options.map((option, idx) => {
               const isCorrect = option === data.answer;
               const isSelected = option === selectedOption;
 
@@ -176,6 +176,13 @@ const MatchThePitchPage = () => {
                       Your browser does not support the audio element.
                     </audio>
                   </div>
+
+                  {/* Show pitch value for this option after submit */}
+                  {submitted && data.optionsNotes && (
+                    <div className="mt-2 text-sm text-gray-700">
+                      Pitch: {data.optionsNotes[idx]}
+                    </div>
+                  )}
 
                   {/* Feedback icons */}
                   {submitted && (

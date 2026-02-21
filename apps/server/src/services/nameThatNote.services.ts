@@ -270,6 +270,12 @@ const getPianoLongMasterQuestion = (): nameThatNoteQuestionType => {
       PIANO_LONG_KEYS[thirdIndex]!,
       PIANO_LONG_KEYS[fourthIndex]!,
     ],
+    optionsFiles: [
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[firstIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[secondIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[thirdIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[fourthIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+    ],
     answer: PIANO_LONG_KEYS[answerIndex]!,
   };
 };

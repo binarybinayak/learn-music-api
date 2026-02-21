@@ -10,5 +10,6 @@ export type nameThatNoteQuestionType = {
 export type matchThePitchQuestionType = {
   note: string;
   options: string[];
+  optionsNotes?: string[];
   answer: string;
 };
