@@ -6,17 +6,12 @@ import {
   PIANO_LONG_FILE_EXTENSION,
   PIANO_LONG_FILE_PATH,
 } from "../config/constants";
-
-export type matchThePitchProp = {
-  note: string;
-  options: string[];
-  answer: string;
-};
+import type { matchThePitchQuestionType } from "@learn-music-app/shared";
 
 export const getMatchThePitchQuestion = (
   instrument: string,
   difficulty: string,
-): matchThePitchProp => {
+): matchThePitchQuestionType => {
   if (instrument === "piano short") {
     return getPianoShortQuestion(difficulty);
   } else if (instrument === "piano long") {
@@ -26,7 +21,9 @@ export const getMatchThePitchQuestion = (
   }
 };
 
-const getPianoShortQuestion = (difficulty: string): matchThePitchProp => {
+const getPianoShortQuestion = (
+  difficulty: string,
+): matchThePitchQuestionType => {
   if (difficulty === "easy") {
     return getPianoShortEasyQuestion();
   }
@@ -42,7 +39,7 @@ const getPianoShortQuestion = (difficulty: string): matchThePitchProp => {
   throw new Error("Difficulty not supported");
 };
 
-const getPianoShortEasyQuestion = (): matchThePitchProp => {
+const getPianoShortEasyQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 72));
   const secondIndex = firstIndex + 16 + Math.floor(Math.random() * 9);
   const thirdIndex = secondIndex + 16 + Math.floor(Math.random() * 9);
@@ -64,7 +61,7 @@ const getPianoShortEasyQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoShortMediumQuestion = (): matchThePitchProp => {
+const getPianoShortMediumQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 36));
   const secondIndex = firstIndex + 6 + Math.floor(Math.random() * 7);
   const thirdIndex = secondIndex + 6 + Math.floor(Math.random() * 7);
@@ -86,7 +83,7 @@ const getPianoShortMediumQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoShortHardQuestion = (): matchThePitchProp => {
+const getPianoShortHardQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 20));
   const secondIndex = firstIndex + 1 + Math.floor(Math.random() * 5);
   const thirdIndex = secondIndex + 1 + Math.floor(Math.random() * 5);
@@ -108,7 +105,7 @@ const getPianoShortHardQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoShortMasterQuestion = (): matchThePitchProp => {
+const getPianoShortMasterQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_SHORT_KEYS.length - 4));
   const secondIndex = firstIndex + 1;
   const thirdIndex = secondIndex + 1;
@@ -130,7 +127,9 @@ const getPianoShortMasterQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoLongQuestion = (difficulty: string): matchThePitchProp => {
+const getPianoLongQuestion = (
+  difficulty: string,
+): matchThePitchQuestionType => {
   if (difficulty === "easy") {
     return getPianoLongEasyQuestion();
   }
@@ -146,7 +145,7 @@ const getPianoLongQuestion = (difficulty: string): matchThePitchProp => {
   throw new Error("Difficulty not supported");
 };
 
-const getPianoLongEasyQuestion = (): matchThePitchProp => {
+const getPianoLongEasyQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 72));
   const secondIndex = firstIndex + 8 + Math.floor(Math.random() * 9);
   const thirdIndex = secondIndex + 8 + Math.floor(Math.random() * 9);
@@ -168,7 +167,7 @@ const getPianoLongEasyQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoLongMediumQuestion = (): matchThePitchProp => {
+const getPianoLongMediumQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 36));
   const secondIndex = firstIndex + 6 + Math.floor(Math.random() * 7);
   const thirdIndex = secondIndex + 6 + Math.floor(Math.random() * 7);
@@ -190,7 +189,7 @@ const getPianoLongMediumQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoLongHardQuestion = (): matchThePitchProp => {
+const getPianoLongHardQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 20));
   const secondIndex = firstIndex + 1 + Math.floor(Math.random() * 5);
   const thirdIndex = secondIndex + 1 + Math.floor(Math.random() * 5);
@@ -212,7 +211,7 @@ const getPianoLongHardQuestion = (): matchThePitchProp => {
   };
 };
 
-const getPianoLongMasterQuestion = (): matchThePitchProp => {
+const getPianoLongMasterQuestion = (): matchThePitchQuestionType => {
   const firstIndex = Math.floor(Math.random() * (PIANO_LONG_KEYS.length - 4));
   const secondIndex = firstIndex + 1;
   const thirdIndex = secondIndex + 1;
