@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchNameThatNote } from "../../services/games";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import type { nameThatNoteQuestionType } from "@learn-music-app/shared";
 import {
   NAME_THAT_NOTE_DIFFICULTIES,
   NAME_THAT_NOTE_INSTRUMENTS,
 } from "../../app/constants";
+import { getHighScore, saveHighScore } from "../../utils/highScores";
 
 const NameThatNotePage = () => {
   const [difficulty, setDifficulty] =
@@ -17,23 +18,63 @@ const NameThatNotePage = () => {
   const [inputValue, setInputValue] = useState(""); // for god mode
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const { data, isLoading, refetch } = useQuery<nameThatNoteQuestionType>({
     queryKey: ["nameThatNote", difficulty, instrument],
     queryFn: () => fetchNameThatNote({ difficulty, instrument }),
   });
 
+  // Update high score when difficulty, instrument, or score changes
+  useEffect(() => {
+    const updated = getHighScore({
+      game: "nameThatNote",
+      instrument,
+      difficulty,
+    });
+    setHighScore(updated);
+  }, [difficulty, instrument, score]);
+
   const handleSubmit = () => {
     if (difficulty === "god") {
       if (!inputValue) return;
       setSubmitted(true);
       if (inputValue.trim().toLowerCase() === data?.answer.toLowerCase()) {
-        setScore((prev) => prev + 1);
+        setScore((prev) => {
+          const newScore = prev + 1;
+          // Save high score if improved
+          if (newScore > highScore) {
+            saveHighScore(
+              {
+                game: "nameThatNote",
+                instrument,
+                difficulty,
+              },
+              newScore,
+            );
+          }
+          return newScore;
+        });
       }
     } else {
       if (!selectedOption) return;
       setSubmitted(true);
-      if (selectedOption === data?.answer) setScore((prev) => prev + 1);
+      if (selectedOption === data?.answer) {
+        setScore((prev) => {
+          const newScore = prev + 1;
+          if (newScore > highScore) {
+            saveHighScore(
+              {
+                game: "nameThatNote",
+                instrument,
+                difficulty,
+              },
+              newScore,
+            );
+          }
+          return newScore;
+        });
+      }
     }
   };
 
@@ -115,6 +156,10 @@ const NameThatNotePage = () => {
 
       <div className="mb-4 text-lg">
         <span className="font-semibold text-gray-700">Score:</span> {score}
+      </div>
+      <div className="mb-6 text-lg">
+        <span className="font-semibold text-gray-700">High Score:</span>{" "}
+        <span className="text-blue-600 font-bold">{highScore}</span>
       </div>
 
       {isLoading && <p>Loading...</p>}

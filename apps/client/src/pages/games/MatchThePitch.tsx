@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { fetchMatchThePitch } from "../../services/games";
 import type { matchThePitchQuestionType } from "@learn-music-app/shared";
@@ -7,6 +7,7 @@ import {
   MATCH_THE_PITCH_DIFFICULTIES,
   MATCH_THE_PITCH_INSTRUMENTS,
 } from "../../app/constants";
+import { getHighScore, saveHighScore } from "../../utils/highScores";
 
 const MatchThePitchPage = () => {
   const [difficulty, setDifficulty] =
@@ -16,16 +17,43 @@ const MatchThePitchPage = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const { data, isLoading, refetch } = useQuery<matchThePitchQuestionType>({
     queryKey: ["matchThePitch", difficulty, instrument],
     queryFn: () => fetchMatchThePitch({ difficulty, instrument }),
   });
 
+  // Update high score when difficulty, instrument, or score changes
+  useEffect(() => {
+    const updated = getHighScore({
+      game: "matchThePitch",
+      instrument,
+      difficulty,
+    });
+    setHighScore(updated);
+  }, [difficulty, instrument, score]);
+
   const handleSubmit = () => {
     if (!selectedOption) return;
     setSubmitted(true);
-    if (selectedOption === data?.answer) setScore((prev) => prev + 1);
+    if (selectedOption === data?.answer) {
+      setScore((prev) => {
+        const newScore = prev + 1;
+        // Save high score if improved
+        if (newScore > highScore) {
+          saveHighScore(
+            {
+              game: "matchThePitch",
+              instrument,
+              difficulty,
+            },
+            newScore,
+          );
+        }
+        return newScore;
+      });
+    }
   };
 
   const handleNext = () => {
@@ -98,6 +126,10 @@ const MatchThePitchPage = () => {
 
       <div className="mb-4 text-lg">
         <span className="font-semibold text-gray-700">Score:</span> {score}
+      </div>
+      <div className="mb-6 text-lg">
+        <span className="font-semibold text-gray-700">High Score:</span>{" "}
+        <span className="text-blue-600 font-bold">{highScore}</span>
       </div>
 
       {isLoading && <p>Loading...</p>}
