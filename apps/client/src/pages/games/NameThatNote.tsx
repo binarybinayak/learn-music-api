@@ -203,14 +203,14 @@ const NameThatNotePage = () => {
             </div>
           ) : (
             <form className="flex flex-col gap-3">
-              {data.options!.map((option) => {
+              {data.options!.map((option, idx) => {
                 const isCorrect = option === data.answer;
                 const isSelected = option === selectedOption;
 
                 return (
                   <label
                     key={option}
-                    className={`flex items-center justify-between border rounded p-2 cursor-pointer transition ${
+                    className={`flex flex-col sm:flex-row items-center justify-between border rounded p-2 cursor-pointer transition ${
                       submitted
                         ? isCorrect
                           ? "bg-green-100 border-green-400"
@@ -220,7 +220,7 @@ const NameThatNotePage = () => {
                         : "hover:bg-gray-100"
                     }`}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 w-full sm:w-auto">
                       <input
                         type="radio"
                         name="noteOption"
@@ -232,6 +232,18 @@ const NameThatNotePage = () => {
                       />
                       <span className="text-gray-800">{option}</span>
                     </div>
+
+                    {submitted && data.optionsFiles && (
+                      <div className="mt-2 sm:mt-0 sm:ml-4 w-full sm:w-32">
+                        <audio
+                          controls
+                          className="w-full"
+                          src={data.optionsFiles[idx]}
+                        >
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                    )}
 
                     {submitted && (
                       <span>

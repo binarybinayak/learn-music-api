@@ -27,6 +27,12 @@ export const fetchNameThatNote = async ({
 
   // Encode # in the file name
   data.file = getSoundsBaseUrl() + data.file.replace("#", "%23");
+  // Encode any option audio files returned by the server
+  if (data.optionsFiles && Array.isArray(data.optionsFiles)) {
+    data.optionsFiles = data.optionsFiles.map(
+      (f) => getSoundsBaseUrl() + f.replace("#", "%23"),
+    );
+  }
   return data;
 };
 

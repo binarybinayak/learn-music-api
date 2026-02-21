@@ -58,6 +58,12 @@ const getPianoShortEasyQuestion = (): nameThatNoteQuestionType => {
       PIANO_SHORT_KEYS[thirdIndex]!,
       PIANO_SHORT_KEYS[fourthIndex]!,
     ],
+    optionsFiles: [
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[firstIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[secondIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[thirdIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[fourthIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+    ],
     answer: PIANO_SHORT_KEYS[answerIndex]!,
   };
 };
@@ -79,6 +85,12 @@ const getPianoShortMediumQuestion = (): nameThatNoteQuestionType => {
       PIANO_SHORT_KEYS[secondIndex]!,
       PIANO_SHORT_KEYS[thirdIndex]!,
       PIANO_SHORT_KEYS[fourthIndex]!,
+    ],
+    optionsFiles: [
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[firstIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[secondIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[thirdIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[fourthIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
     ],
     answer: PIANO_SHORT_KEYS[answerIndex]!,
   };
@@ -102,6 +114,12 @@ const getPianoShortHardQuestion = (): nameThatNoteQuestionType => {
       PIANO_SHORT_KEYS[thirdIndex]!,
       PIANO_SHORT_KEYS[fourthIndex]!,
     ],
+    optionsFiles: [
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[firstIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[secondIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[thirdIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[fourthIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+    ],
     answer: PIANO_SHORT_KEYS[answerIndex]!,
   };
 };
@@ -123,6 +141,12 @@ const getPianoShortMasterQuestion = (): nameThatNoteQuestionType => {
       PIANO_SHORT_KEYS[secondIndex]!,
       PIANO_SHORT_KEYS[thirdIndex]!,
       PIANO_SHORT_KEYS[fourthIndex]!,
+    ],
+    optionsFiles: [
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[firstIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[secondIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[thirdIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
+      `${PIANO_SHORT_FILE_PATH}${PIANO_SHORT_KEYS[fourthIndex]!}${PIANO_SHORT_FILE_EXTENSION ?? ""}`,
     ],
     answer: PIANO_SHORT_KEYS[answerIndex]!,
   };
@@ -162,6 +186,12 @@ const getPianoLongEasyQuestion = (): nameThatNoteQuestionType => {
       PIANO_LONG_KEYS[thirdIndex]!,
       PIANO_LONG_KEYS[fourthIndex]!,
     ],
+    optionsFiles: [
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[firstIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[secondIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[thirdIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[fourthIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+    ],
     answer: PIANO_LONG_KEYS[answerIndex]!,
   };
 };
@@ -184,6 +214,12 @@ const getPianoLongMediumQuestion = (): nameThatNoteQuestionType => {
       PIANO_LONG_KEYS[thirdIndex]!,
       PIANO_LONG_KEYS[fourthIndex]!,
     ],
+    optionsFiles: [
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[firstIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[secondIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[thirdIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[fourthIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+    ],
     answer: PIANO_LONG_KEYS[answerIndex]!,
   };
 };
@@ -205,6 +241,12 @@ const getPianoLongHardQuestion = (): nameThatNoteQuestionType => {
       PIANO_LONG_KEYS[secondIndex]!,
       PIANO_LONG_KEYS[thirdIndex]!,
       PIANO_LONG_KEYS[fourthIndex]!,
+    ],
+    optionsFiles: [
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[firstIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[secondIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[thirdIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
+      `${PIANO_LONG_FILE_PATH}${PIANO_LONG_KEYS[fourthIndex]!}${PIANO_LONG_FILE_EXTENSION ?? ""}`,
     ],
     answer: PIANO_LONG_KEYS[answerIndex]!,
   };
