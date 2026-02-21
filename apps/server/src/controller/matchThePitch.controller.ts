@@ -1,9 +1,7 @@
 import { Router, Request, Response } from "express";
 import { INSTRUMENTS } from "../config/constants";
-import {
-  getMatchThePitchQuestion,
-  matchThePitchProp,
-} from "../services/matchThePitch.services";
+import { getMatchThePitchQuestion } from "../services/matchThePitch.services";
+import type { matchThePitchQuestionType } from "@learn-music-app/shared";
 
 const router = Router();
 
@@ -24,7 +22,7 @@ router.get("/:instrument", (req: Request, res: Response) => {
     ? difficulty
     : "medium";
 
-  const question: matchThePitchProp = getMatchThePitchQuestion(
+  const question: matchThePitchQuestionType = getMatchThePitchQuestion(
     instrument.replace("_", " "),
     level,
   );
